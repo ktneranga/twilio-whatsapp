@@ -1,0 +1,20 @@
+service: MessagingService
+frameworkVersion: '3'
+
+provider:
+    name: aws
+    runtime: nodejs18.x
+
+functions:
+    api:
+        handler: index.handler
+        events:
+            - httpApi: '*'
+        environment:
+            API_VERSION_PREFIX: /api/v1
+            TWILIO_ACCOUNT_SID:
+            TWILIO_AUTH_TOKEN:
+            TWILIO_FROM_PHONE_NUMBER: '+14155238886'
+
+plugins:
+    - serverless-offline
